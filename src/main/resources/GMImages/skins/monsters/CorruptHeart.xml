@@ -24,7 +24,7 @@
         <Frame XPosition="0" YPosition="0" Delay="26" Visible="True" XScale="100" YScale="100" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="False"/>
       </RootAnimation>
       <LayerAnimations>
-        <LayerAnimation LayerId="0" Visible="False">
+        <LayerAnimation LayerId="0" Visible="True">
           <Frame XPosition="0.0" YPosition="0.0" XPivot="225.0" YPivot="450.0" Width="450" Height="450" XScale="100.0" YScale="100.0" Delay="3" Visible="True" XCrop="0" YCrop="0" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0.0" Interpolated="True"/>
           <Frame XPosition="18.0" YPosition="15.0" XPivot="225.0" YPivot="450.0" Width="450" Height="450" XScale="90.0" YScale="105.0" Delay="6" Visible="True" XCrop="0" YCrop="0" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0.0" Interpolated="True"/>
           <Frame XPosition="-6.0" YPosition="-59.0" XPivot="225.0" YPivot="450.0" Width="450" Height="450" XScale="110.0" YScale="80.0" Delay="16" Visible="True" XCrop="0" YCrop="0" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0.0" Interpolated="True"/>

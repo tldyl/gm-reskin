@@ -1,9 +1,6 @@
 package gmreskin;
 
-import basemod.BaseMod;
-import basemod.ModLabeledToggleButton;
-import basemod.ModPanel;
-import basemod.ReflectionHacks;
+import basemod.*;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import basemod.interfaces.PostUpdateSubscriber;
@@ -34,6 +31,7 @@ import com.megacrit.cardcrawl.monsters.ending.SpireSpear;
 import com.megacrit.cardcrawl.monsters.exordium.*;
 import gmreskin.patches.AbstractMonsterPatch;
 import gmreskin.skins.SkinRenderer;
+import gmreskin.ui.ModDropdownBox;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -134,6 +132,82 @@ public class GMReskin implements PostInitializeSubscriber,
         }
     }
 
+    private static void disableAllOriginalSkins() {
+        disableSkin(Ironclad.class);
+        disableSkin(TheSilent.class);
+        disableSkin(Defect.class);
+        disableSkin(Watcher.class);
+        disableCharacterSkinIndexFromOtherMod("Scapegoat", "demoMod.scapegoat.characters.ScapegoatCharacter");
+        disableCharacterSkinIndexFromOtherMod("funnies", "characters.GodOfAbstract");
+        disableCharacterSkinIndexFromOtherMod("DerFreischutz", "demoMod.derfreischutz.characters.DerFreischutzCharacter");
+        disableCharacterSkinIndexFromOtherMod("IceBreaker", "demoMod.icebreaker.characters.IceBreakerCharacter");
+        disableCharacterSkinIndexFromOtherMod("BlueTheAstray", "rs.wolf.theastray.characters.BlueTheAstray");
+        disableSkin(AcidSlime_L.class);
+        disableSkin(AcidSlime_M.class);
+        disableSkin(AcidSlime_S.class);
+        disableSkin(Byrd.class);
+        disableSkin(Centurion.class);
+        disableSkin(Chosen.class);
+        disableSkin(Cultist.class);
+        disableSkin(Darkling.class);
+        disableSkin(Exploder.class);
+        disableSkin(FungiBeast.class);
+        disableSkin(GremlinFat.class);
+        disableSkin(GremlinThief.class);
+        disableSkin(GremlinTsundere.class);
+        disableSkin(GremlinWarrior.class);
+        disableSkin(GremlinWizard.class);
+        disableSkin(Healer.class);
+        disableSkin(JawWorm.class);
+        disableSkin(Looter.class);
+        disableSkin(LouseDefensive.class);
+        disableSkin(LouseNormal.class);
+        disableSkin(Maw.class);
+        disableSkin(Mugger.class);
+        disableSkin(OrbWalker.class);
+        disableSkin(Repulsor.class);
+        disableSkin(ShelledParasite.class);
+        disableSkin(SlaverBlue.class);
+        disableSkin(SlaverRed.class);
+        disableSkin(SnakePlant.class);
+        disableSkin(Snecko.class);
+        disableSkin(SphericGuardian.class);
+        disableSkin(Spiker.class);
+        disableSkin(SpikeSlime_L.class);
+        disableSkin(SpikeSlime_M.class);
+        disableSkin(SpikeSlime_S.class);
+        disableSkin(SpireGrowth.class);
+        disableSkin(Transient.class);
+        disableSkin(WrithingMass.class);
+        disableSkin(Hexaghost.class);
+        disableSkin(TheGuardian.class);
+        disableSkin(SlimeBoss.class);
+        disableSkin(Sentry.class);
+        disableSkin(GremlinNob.class);
+        disableSkin(Lagavulin.class);
+        disableSkin(Taskmaster.class);
+        disableSkin(BookOfStabbing.class);
+        disableSkin(GremlinLeader.class);
+        disableSkin(BronzeAutomaton.class);
+        disableSkin(BronzeOrb.class);
+        disableSkin(TheCollector.class);
+        disableSkin(TorchHead.class);
+        disableSkin(Champ.class);
+        disableSkin(BanditLeader.class);
+        disableSkin(BanditPointy.class);
+        disableSkin(BanditBear.class);
+        disableSkin(Nemesis.class);
+        disableSkin(Reptomancer.class);
+        disableSkin(SnakeDagger.class);
+        disableSkin(Donu.class);
+        disableSkin(Deca.class);
+        disableSkin(TimeEater.class);
+        disableSkin(AwakenedOne.class);
+        disableSkin(SpireSpear.class);
+        disableSkin(SpireShield.class);
+        disableSkin(CorruptHeart.class);
+    }
+
     @Override
     public void receivePostInitialize() {
         try {
@@ -148,98 +222,17 @@ public class GMReskin implements PostInitializeSubscriber,
         UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(makeID("ModPanel"));
         ModPanel settingsPanel = new ModPanel();
 
-        skip:
-        for (ModInfo modInfo : Loader.MODINFOS) {
-            for (String modId : modInfo.Dependencies) {
-                if ("gm-reskin".equals(modId)) {
-                    enableDefaultSkin = false;
-                    break skip;
-                }
-            }
-        }
-
         ModLabeledToggleButton enableDefaultSkinOption = new ModLabeledToggleButton(uiStrings.TEXT[0], 350.0F, 700.0F, Color.WHITE, FontHelper.buttonLabelFont, enableDefaultSkin, settingsPanel, (me) -> {},
                 (me) -> {
                     enableDefaultSkin = me.enabled;
                     if (!enableDefaultSkin) {
-                        disableSkin(Ironclad.class);
-                        disableSkin(TheSilent.class);
-                        disableSkin(Defect.class);
-                        disableSkin(Watcher.class);
-                        disableCharacterSkinIndexFromOtherMod("Scapegoat", "demoMod.scapegoat.characters.ScapegoatCharacter");
-                        disableCharacterSkinIndexFromOtherMod("funnies", "characters.GodOfAbstract");
-                        disableCharacterSkinIndexFromOtherMod("DerFreischutz", "demoMod.derfreischutz.characters.DerFreischutzCharacter");
-                        disableCharacterSkinIndexFromOtherMod("IceBreaker", "demoMod.icebreaker.characters.IceBreakerCharacter");
-                        disableCharacterSkinIndexFromOtherMod("BlueTheAstray", "rs.wolf.theastray.characters.BlueTheAstray");
-                        disableSkin(AcidSlime_L.class);
-                        disableSkin(AcidSlime_M.class);
-                        disableSkin(AcidSlime_S.class);
-                        disableSkin(Byrd.class);
-                        disableSkin(Centurion.class);
-                        disableSkin(Chosen.class);
-                        disableSkin(Cultist.class);
-                        disableSkin(Darkling.class);
-                        disableSkin(Exploder.class);
-                        disableSkin(FungiBeast.class);
-                        disableSkin(GremlinFat.class);
-                        disableSkin(GremlinThief.class);
-                        disableSkin(GremlinTsundere.class);
-                        disableSkin(GremlinWarrior.class);
-                        disableSkin(GremlinWizard.class);
-                        disableSkin(Healer.class);
-                        disableSkin(JawWorm.class);
-                        disableSkin(Looter.class);
-                        disableSkin(LouseDefensive.class);
-                        disableSkin(LouseNormal.class);
-                        disableSkin(Maw.class);
-                        disableSkin(Mugger.class);
-                        disableSkin(OrbWalker.class);
-                        disableSkin(Repulsor.class);
-                        disableSkin(ShelledParasite.class);
-                        disableSkin(SlaverBlue.class);
-                        disableSkin(SlaverRed.class);
-                        disableSkin(SnakePlant.class);
-                        disableSkin(Snecko.class);
-                        disableSkin(SphericGuardian.class);
-                        disableSkin(Spiker.class);
-                        disableSkin(SpikeSlime_L.class);
-                        disableSkin(SpikeSlime_M.class);
-                        disableSkin(SpikeSlime_S.class);
-                        disableSkin(SpireGrowth.class);
-                        disableSkin(Transient.class);
-                        disableSkin(WrithingMass.class);
-                        disableSkin(Hexaghost.class);
-                        disableSkin(TheGuardian.class);
-                        disableSkin(SlimeBoss.class);
-                        disableSkin(Sentry.class);
-                        disableSkin(GremlinNob.class);
-                        disableSkin(Lagavulin.class);
-                        disableSkin(Taskmaster.class);
-                        disableSkin(BookOfStabbing.class);
-                        disableSkin(GremlinLeader.class);
-                        disableSkin(BronzeAutomaton.class);
-                        disableSkin(BronzeOrb.class);
-                        disableSkin(TheCollector.class);
-                        disableSkin(TorchHead.class);
-                        disableSkin(Champ.class);
-                        disableSkin(BanditLeader.class);
-                        disableSkin(BanditPointy.class);
-                        disableSkin(BanditBear.class);
-                        disableSkin(Nemesis.class);
-                        disableSkin(Reptomancer.class);
-                        disableSkin(SnakeDagger.class);
-                        disableSkin(Donu.class);
-                        disableSkin(Deca.class);
-                        disableSkin(TimeEater.class);
-                        disableSkin(AwakenedOne.class);
-                        disableSkin(SpireSpear.class);
-                        disableSkin(SpireShield.class);
-                        disableSkin(CorruptHeart.class);
+                        disableAllOriginalSkins();
                     } else {
-                        setSkinIndex(Ironclad.class, 0);
-                        setSkinIndex(TheSilent.class, 0);
-                        setSkinIndex(Defect.class, 0);
-                        setSkinIndex(Watcher.class, 0);
+                        int skinThemeSelect = skinIndexInfo.has("skinThemeSelect") ? skinIndexInfo.getInt("skinThemeSelect") : 0;
+                        setSkinIndex(Ironclad.class, skinThemeSelect);
+                        setSkinIndex(TheSilent.class, skinThemeSelect);
+                        setSkinIndex(Defect.class, skinThemeSelect);
+                        setSkinIndex(Watcher.class, skinThemeSelect);
                         setCharacterSkinIndexFromOtherMod("Scapegoat", "demoMod.scapegoat.characters.ScapegoatCharacter", 0);
                         setCharacterSkinIndexFromOtherMod("funnies", "characters.GodOfAbstract", 0);
                         setCharacterSkinIndexFromOtherMod("DerFreischutz", "demoMod.derfreischutz.characters.DerFreischutzCharacter", 0);
@@ -314,7 +307,31 @@ public class GMReskin implements PostInitializeSubscriber,
                     saveSkinIndexInfo();
                 }
         );
+        ModLabel skinThemeSelectLabel = new ModLabel(uiStrings.TEXT[1], 350.0F, 650.0F, settingsPanel, me -> {});
+        UIStrings skinThemeSelect = CardCrawlGame.languagePack.getUIString(makeID("SkinThemeSelect"));
+        ModDropdownBox modDropdownBox = new ModDropdownBox(800.0F, 672.0F, skinThemeSelect.TEXT, skinIndexInfo.has("skinThemeSelect") ? skinIndexInfo.getInt("skinThemeSelect") : 0, index -> {
+            setSkinIndex(Ironclad.class, index);
+            setSkinIndex(TheSilent.class, index);
+            setSkinIndex(Defect.class, index);
+            setSkinIndex(Watcher.class, index);
+            skinIndexInfo.setInt("skinThemeSelect", index);
+            saveSkinIndexInfo();
+        });
         settingsPanel.addUIElement(enableDefaultSkinOption);
+        settingsPanel.addUIElement(skinThemeSelectLabel);
+        settingsPanel.addUIElement(modDropdownBox);
+
+        skip:
+        for (ModInfo modInfo : Loader.MODINFOS) {
+            for (String modId : modInfo.Dependencies) {
+                if ("gm-reskin".equals(modId)) {
+                    enableDefaultSkin = false;
+                    disableAllOriginalSkins();
+                    break skip;
+                }
+            }
+        }
+
         BaseMod.registerModBadge(ImageMaster.loadImage(getResourcePath("ui/badge.png")), "GM Reskin", "Everyone", "TODO", settingsPanel);
     }
 

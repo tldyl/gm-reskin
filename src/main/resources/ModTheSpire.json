@@ -3,7 +3,7 @@
   "name": "Reskin the Spire",
   "author_list": ["GM_Whitose", "Temple9"],
   "description": "一个意义不明的换皮mod（或者是框架？）",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "mts_version": "3.22.0",
   "dependencies": ["basemod", "Anm2Player"]
 }

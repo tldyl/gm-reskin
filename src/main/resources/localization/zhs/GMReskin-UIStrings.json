@@ -1,7 +1,14 @@
 {
   "GMReskin:ModPanel": {
     "TEXT": [
-      "启用本框架的演示皮肤"
+      "启用本框架的演示皮肤",
+      "原版角色皮肤主题选择："
+    ]
+  },
+  "GMReskin:SkinThemeSelect": {
+    "TEXT": [
+      "经典",
+      "猫女仆"
     ]
   }
 }

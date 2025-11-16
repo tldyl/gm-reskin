@@ -1,7 +1,14 @@
 {
   "GMReskin:ModPanel": {
     "TEXT": [
-      "Enable demo skins for this mod."
+      "Enable demo skins for this mod.",
+      "Original character skin theme:"
+    ]
+  },
+  "GMReskin:SkinThemeSelect": {
+    "TEXT": [
+      "Classical",
+      "Neko Maid"
     ]
   }
 }
