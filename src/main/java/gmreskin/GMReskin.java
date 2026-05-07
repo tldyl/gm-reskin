@@ -31,7 +31,6 @@ import com.megacrit.cardcrawl.monsters.ending.SpireSpear;
 import com.megacrit.cardcrawl.monsters.exordium.*;
 import gmreskin.patches.AbstractMonsterPatch;
 import gmreskin.skins.SkinRenderer;
-import gmreskin.ui.ModDropdownBox;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -228,11 +227,10 @@ public class GMReskin implements PostInitializeSubscriber,
                     if (!enableDefaultSkin) {
                         disableAllOriginalSkins();
                     } else {
-                        int skinThemeSelect = skinIndexInfo.has("skinThemeSelect") ? skinIndexInfo.getInt("skinThemeSelect") : 0;
-                        setSkinIndex(Ironclad.class, skinThemeSelect);
-                        setSkinIndex(TheSilent.class, skinThemeSelect);
-                        setSkinIndex(Defect.class, skinThemeSelect);
-                        setSkinIndex(Watcher.class, skinThemeSelect);
+                        setSkinIndex(Ironclad.class, 0);
+                        setSkinIndex(TheSilent.class, 0);
+                        setSkinIndex(Defect.class, 0);
+                        setSkinIndex(Watcher.class, 0);
                         setCharacterSkinIndexFromOtherMod("Scapegoat", "demoMod.scapegoat.characters.ScapegoatCharacter", 0);
                         setCharacterSkinIndexFromOtherMod("funnies", "characters.GodOfAbstract", 0);
                         setCharacterSkinIndexFromOtherMod("DerFreischutz", "demoMod.derfreischutz.characters.DerFreischutzCharacter", 0);
@@ -307,19 +305,7 @@ public class GMReskin implements PostInitializeSubscriber,
                     saveSkinIndexInfo();
                 }
         );
-        ModLabel skinThemeSelectLabel = new ModLabel(uiStrings.TEXT[1], 350.0F, 650.0F, settingsPanel, me -> {});
-        UIStrings skinThemeSelect = CardCrawlGame.languagePack.getUIString(makeID("SkinThemeSelect"));
-        ModDropdownBox modDropdownBox = new ModDropdownBox(800.0F, 672.0F, skinThemeSelect.TEXT, skinIndexInfo.has("skinThemeSelect") ? skinIndexInfo.getInt("skinThemeSelect") : 0, index -> {
-            setSkinIndex(Ironclad.class, index);
-            setSkinIndex(TheSilent.class, index);
-            setSkinIndex(Defect.class, index);
-            setSkinIndex(Watcher.class, index);
-            skinIndexInfo.setInt("skinThemeSelect", index);
-            saveSkinIndexInfo();
-        });
         settingsPanel.addUIElement(enableDefaultSkinOption);
-        settingsPanel.addUIElement(skinThemeSelectLabel);
-        settingsPanel.addUIElement(modDropdownBox);
 
         skip:
         for (ModInfo modInfo : Loader.MODINFOS) {

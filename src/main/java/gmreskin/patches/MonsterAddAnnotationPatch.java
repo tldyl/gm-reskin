@@ -2,10 +2,6 @@ package gmreskin.patches;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireRawPatch;
-import com.megacrit.cardcrawl.characters.Defect;
-import com.megacrit.cardcrawl.characters.Ironclad;
-import com.megacrit.cardcrawl.characters.TheSilent;
-import com.megacrit.cardcrawl.characters.Watcher;
 import com.megacrit.cardcrawl.monsters.beyond.*;
 import com.megacrit.cardcrawl.monsters.city.*;
 import com.megacrit.cardcrawl.monsters.ending.CorruptHeart;
@@ -90,62 +86,6 @@ public class MonsterAddAnnotationPatch {
                     }
                 }
             };
-        }
-    }
-
-    @SpirePatch(
-            clz = Ironclad.class,
-            method = "getStartingDeck"
-    )
-    public static class PatchIronclad {
-        @SpireRawPatch
-        public static void Raw(CtBehavior ctMethodToPatch) {
-            CtClass ctClass = ctMethodToPatch.getDeclaringClass();
-            ConstPool constPool = ctMethodToPatch.getMethodInfo().getConstPool();
-            Annotation skin1 = setCustomSkinRenderer(GeneralCharacterSkinRenderer.class, GMReskin.getResourcePath("skins/characters/" + ctClass.getSimpleName() + "Neko.xml"), 1, constPool);
-            addAnnotations(ctMethodToPatch, skin1);
-        }
-    }
-
-    @SpirePatch(
-            clz = TheSilent.class,
-            method = "getStartingDeck"
-    )
-    public static class PatchTheSilent {
-        @SpireRawPatch
-        public static void Raw(CtBehavior ctMethodToPatch) {
-            CtClass ctClass = ctMethodToPatch.getDeclaringClass();
-            ConstPool constPool = ctMethodToPatch.getMethodInfo().getConstPool();
-            Annotation skin1 = setCustomSkinRenderer(GeneralCharacterSkinRenderer.class, GMReskin.getResourcePath("skins/characters/" + ctClass.getSimpleName() + "Neko.xml"), 1, constPool);
-            addAnnotations(ctMethodToPatch, skin1);
-        }
-    }
-
-    @SpirePatch(
-            clz = Defect.class,
-            method = "getStartingDeck"
-    )
-    public static class PatchDefect {
-        @SpireRawPatch
-        public static void Raw(CtBehavior ctMethodToPatch) {
-            CtClass ctClass = ctMethodToPatch.getDeclaringClass();
-            ConstPool constPool = ctMethodToPatch.getMethodInfo().getConstPool();
-            Annotation skin1 = setCustomSkinRenderer(GeneralCharacterSkinRenderer.class, GMReskin.getResourcePath("skins/characters/" + ctClass.getSimpleName() + "Neko.xml"), 1, constPool);
-            addAnnotations(ctMethodToPatch, skin1);
-        }
-    }
-
-    @SpirePatch(
-            clz = Watcher.class,
-            method = "getStartingDeck"
-    )
-    public static class PatchWatcher {
-        @SpireRawPatch
-        public static void Raw(CtBehavior ctMethodToPatch) {
-            CtClass ctClass = ctMethodToPatch.getDeclaringClass();
-            ConstPool constPool = ctMethodToPatch.getMethodInfo().getConstPool();
-            Annotation skin1 = setCustomSkinRenderer(GeneralCharacterSkinRenderer.class, GMReskin.getResourcePath("skins/characters/" + ctClass.getSimpleName() + "Neko.xml"), 1, constPool);
-            addAnnotations(ctMethodToPatch, skin1);
         }
     }
 
